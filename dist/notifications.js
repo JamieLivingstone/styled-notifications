@@ -85,7 +85,7 @@ var _helpers = __webpack_require__(2);
 	var defaultOptions = {
 		closeOnClick: true,
 		displayCloseButton: false,
-		positionClass: 'notification-top-right',
+		positionClass: 'nfc-top-right',
 		onclick: false,
 		showDuration: 300
 	};
@@ -96,7 +96,7 @@ var _helpers = __webpack_require__(2);
 
 		// Validate position class
 		function validatePositionClass(className) {
-			var validPositions = ['notification-top-left', 'notification-top-right', 'notification-bottom-left', 'notification-bottom-right'];
+			var validPositions = ['nfc-top-left', 'nfc-top-right', 'nfc-bottom-left', 'nfc-bottom-right'];
 
 			return validPositions.indexOf(className) > -1;
 		}
@@ -121,12 +121,15 @@ var _helpers = __webpack_require__(2);
 		// Validate options and set defaults
 		options = configureOptions(options);
 
+		var container = createNotificationContainer(options.positionClass);
+
 		// Return a notification function
-		return function notification(_ref) {
-			var title = _ref.title,
+		return function notification() {
+			var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+			    title = _ref.title,
 			    message = _ref.message;
 
-			if (!(0, _helpers.isString)(title) && !(0, _helpers.isString)(message)) {
+			if (!title && !message) {
 				return console.warn('Notification must contain a title or a message!');
 			}
 
@@ -134,9 +137,16 @@ var _helpers = __webpack_require__(2);
 			var notificationEl = (0, _helpers.createElement)('div', 'ncf');
 
 			// Close on click
-			if (options.closeOnClick) {
+			if (options.closeOnClick === true) {
 				notificationEl.addEventListener('click', function () {
-					return document.body.removeChild(notificationEl);
+					return container.removeChild(notificationEl);
+				});
+			}
+
+			// Custom click callback
+			if (options.onclick) {
+				notificationEl.addEventListener('click', function (e) {
+					return options.onclick(e);
 				});
 			}
 
@@ -148,7 +158,7 @@ var _helpers = __webpack_require__(2);
 				// Use the wrappers close on click to avoid useless event listeners
 				if (options.closeOnClick === false) {
 					closeButton.addEventListener('click', function () {
-						return document.body.removeChild(notificationEl);
+						return container.removeChild(notificationEl);
 					});
 				}
 
@@ -160,13 +170,20 @@ var _helpers = __webpack_require__(2);
 			(0, _helpers.isString)(message) && (0, _helpers.append)(notificationEl, (0, _helpers.createParagraph)('nfc-message')(message));
 
 			// Append to container
-			var container = createNotificationContainer(options.positionClass);
 			(0, _helpers.append)(container, notificationEl);
 
+			// Remove element after duration
 			if (options.showDuration) {
-				setTimeout(function () {
-					return container.removeChild(notificationEl);
+				var timeout = setTimeout(function () {
+					container.removeChild(notificationEl);
 				}, options.showDuration);
+
+				// If close on click is enabled and the user clicks, cancel timeout
+				if (options.closeOnClick || options.displayCloseButton) {
+					notificationEl.addEventListener('click', function () {
+						return clearTimeout(timeout);
+					});
+				}
 			}
 		};
 	}
@@ -236,7 +253,9 @@ var createElement = exports.createElement = function createElement(elementType) 
 	var element = document.createElement(elementType);
 
 	if (classNames.length) {
-		element.classList.add(classNames);
+		var _element$classList;
+
+		(_element$classList = element.classList).add.apply(_element$classList, classNames);
 	}
 
 	return element;

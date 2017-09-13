@@ -4,8 +4,9 @@
   "description": "A simple JavaScript notifications library",
   "main": "",
   "scripts": {
-    "dev": "webpack --watch",
-    "build": "webpack -p"
+    "watch": "webpack --watch",
+    "build": "webpack -p",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -25,12 +26,14 @@
   "homepage": "https://github.com/JamieLivingstone/Notifications#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-jest": "^21.0.2",
     "babel-loader": "^7.1.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "css-loader": "^0.28.7",
     "eslint": "^4.6.1",
     "extract-text-webpack-plugin": "^3.0.0",
+    "jest": "^21.0.2",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",

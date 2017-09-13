@@ -11,7 +11,7 @@ import {
 	const defaultOptions = {
 		closeOnClick: true,
 		displayCloseButton: false,
-		positionClass: 'notification-top-right',
+		positionClass: 'nfc-top-right',
 		onclick: false,
 		showDuration: 300
 	};
@@ -23,10 +23,10 @@ import {
 		// Validate position class
 		function validatePositionClass(className) {
 			const validPositions = [
-				'notification-top-left',
-				'notification-top-right',
-				'notification-bottom-left',
-				'notification-bottom-right'
+				'nfc-top-left',
+				'nfc-top-right',
+				'nfc-bottom-left',
+				'nfc-bottom-right'
 			];
 
 			return validPositions.indexOf(className) > -1;
@@ -52,9 +52,11 @@ import {
 		// Validate options and set defaults
 		options = configureOptions(options);
 
+		const container = createNotificationContainer(options.positionClass);
+
 		// Return a notification function
-		return function notification({ title, message }) {
-			if(!isString(title) && !isString(message)) {
+		return function notification({ title, message } = {}) {
+			if(!title && !message) {
 				return console.warn('Notification must contain a title or a message!');
 			}
 
@@ -62,8 +64,13 @@ import {
 			const notificationEl = createElement('div', 'ncf');
 
 			// Close on click
-			if(options.closeOnClick) {
-				notificationEl.addEventListener('click', () => document.body.removeChild(notificationEl));
+			if(options.closeOnClick === true) {
+				notificationEl.addEventListener('click', () => container.removeChild(notificationEl));
+			}
+
+			// Custom click callback
+			if(options.onclick) {
+				notificationEl.addEventListener('click', (e) => options.onclick(e));
 			}
 
 			// Display close button
@@ -73,7 +80,7 @@ import {
 
 				// Use the wrappers close on click to avoid useless event listeners
 				if(options.closeOnClick === false){
-					closeButton.addEventListener('click', () => document.body.removeChild(notificationEl));
+					closeButton.addEventListener('click', () =>container.removeChild(notificationEl));
 				}
 
 				append(notificationEl, closeButton);
@@ -84,11 +91,18 @@ import {
 			isString(message) && append(notificationEl, createParagraph('nfc-message')(message));
 
 			// Append to container
-			const container = createNotificationContainer(options.positionClass);
 			append(container, notificationEl);
 
+			// Remove element after duration
 			if(options.showDuration) {
-				setTimeout(() => container.removeChild(notificationEl), options.showDuration);
+				const timeout = setTimeout(() => {
+					container.removeChild(notificationEl);
+				}, options.showDuration);
+
+				// If close on click is enabled and the user clicks, cancel timeout
+				if(options.closeOnClick || options.displayCloseButton) {
+					notificationEl.addEventListener('click', () => clearTimeout(timeout));
+				}
 			}
 		};
 	}

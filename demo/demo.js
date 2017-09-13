@@ -4,10 +4,9 @@
 window.addEventListener('DOMContentLoaded', function () {
 	// Success notification example
 	var successNotification = window.createNotification({
-		closeOnClick: false,
-		showDuration: 2000,
-		displayCloseButton: true,
-		className: 'success'
+		closeOnClick: true,
+		showDuration: 3000,
+		displayCloseButton: true
 	});
 
 	var successButton = document.querySelector('#successNotification');
