@@ -1,18 +1,24 @@
 'use strict';
+import {
+	append,
+	createElement,
+	createParagraph,
+	isString
+} from './helpers';
 
 (function Notifications(window) {
 	// Default notification options
 	const defaultOptions = {
-		closeButton: false,
-		positionClass: 'notification-bottom-right',
-		onclick: null,
-		showDuration: 300,
-		hideDuration: 1000
+		closeOnClick: true,
+		displayCloseButton: false,
+		positionClass: 'notification-top-right',
+		onclick: false,
+		showDuration: 300
 	};
 
-	function validateOptions(options) {
+	function configureOptions(options) {
 		// Create a copy of options
-		options = Object.assign({}, options);
+		options = Object.assign({}, defaultOptions, options);
 
 		// Validate position class
 		function validatePositionClass(className) {
@@ -20,8 +26,7 @@
 				'notification-top-left',
 				'notification-top-right',
 				'notification-bottom-left',
-				'notification-bottom-right',
-				'notification-position-override'
+				'notification-bottom-right'
 			];
 
 			return validPositions.indexOf(className) > -1;
@@ -44,28 +49,59 @@
 
 	// Create a new notification instance
 	function createNotification(options) {
-		options = validateOptions(Object.assign({}, defaultOptions, options));
+		// Validate options and set defaults
+		options = configureOptions(options);
 
 		// Return a notification function
-		return function notification(message) {
-			const notificationEl = document.createElement('div');
-
-			// Display close button
-			if(options.closeButton) {
-				const close = document.createElement('div');
-				const closeButton = document.createElement('button');
-				closeButton.innerText = 'X';
-				close.append(closeButton);
-				closeButton.addEventListener('click', () => document.body.removeChild(notificationEl));
-				notificationEl.append(close);
+		return function notification({ title, message }) {
+			if(!isString(title) && !isString(message)) {
+				return console.warn('Notification must contain a title or a message!');
 			}
 
-			// Append message
-			notificationEl.append(document.createElement('p').innerText = message);
+			// Create the notification wrapper
+			const notificationEl = createElement('div', 'ncf');
 
-			// Append to DOM
-			document.body.appendChild(notificationEl);
+			// Close on click
+			if(options.closeOnClick) {
+				notificationEl.addEventListener('click', () => document.body.removeChild(notificationEl));
+			}
+
+			// Display close button
+			if(options.displayCloseButton) {
+				const closeButton = createElement('button');
+				closeButton.innerText = 'X';
+
+				// Use the wrappers close on click to avoid useless event listeners
+				if(options.closeOnClick === false){
+					closeButton.addEventListener('click', () => document.body.removeChild(notificationEl));
+				}
+
+				append(notificationEl, closeButton);
+			}
+
+			// Append title and message
+			isString(title) && append(notificationEl, createParagraph('ncf-title')(title));
+			isString(message) && append(notificationEl, createParagraph('nfc-message')(message));
+
+			// Append to container
+			const container = createNotificationContainer(options.positionClass);
+			append(container, notificationEl);
+
+			if(options.showDuration) {
+				setTimeout(() => container.removeChild(notificationEl), options.showDuration);
+			}
 		};
+	}
+
+	function createNotificationContainer(position) {
+		let container = document.querySelector(`.${position}`);
+
+		if(!container) {
+			container = createElement('div', position);
+			append(document.body, container);
+		}
+
+		return container;
 	}
 
 	// Add Notifications to window to make globally accessible

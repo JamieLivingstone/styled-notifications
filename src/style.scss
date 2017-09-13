@@ -1,0 +1,15 @@
+// Base colors
+$success: #51A351;
+$info: #2F96B4;
+$warning: #F89406;
+$error: #BD362F;
+
+.ncf {
+  // Position styles
+
+  &:hover {
+    box-shadow: 0 0 12px #000000;
+    opacity: 1;
+    cursor: pointer;
+  }
+}
