@@ -13,7 +13,7 @@ import {
 		displayCloseButton: false,
 		positionClass: 'nfc-top-right',
 		onclick: false,
-		showDuration: 3000,
+		showDuration: 3500,
 		theme: 'success'
 	};
 
@@ -43,6 +43,12 @@ import {
 		if (options.onclick && typeof options.onclick !== 'function') {
 			console.warn('Notification on click must be a function.');
 			options.onclick = defaultOptions.onclick;
+		}
+
+		// Verify theme
+		if(!isString(options.theme) || options.theme.length === 0) {
+			console.warn('Notification theme must be a string with length');
+			options.theme = defaultOptions.theme;
 		}
 
 		return options;
@@ -88,8 +94,8 @@ import {
 			}
 
 			// Append title and message
-			isString(title) && append(notificationEl, createParagraph('ncf-title')(title));
-			isString(message) && append(notificationEl, createParagraph('nfc-message')(message));
+			isString(title) && title.length && append(notificationEl, createParagraph('ncf-title')(title));
+			isString(message) && message.length && append(notificationEl, createParagraph('nfc-message')(message));
 
 			// Append to container
 			append(container, notificationEl);
