@@ -13,11 +13,12 @@ import {
 		displayCloseButton: false,
 		positionClass: 'nfc-top-right',
 		onclick: false,
-		showDuration: 300
+		showDuration: 3000,
+		theme: 'success'
 	};
 
 	function configureOptions(options) {
-		// Create a copy of options
+		// Create a copy of options and merge with defaults
 		options = Object.assign({}, defaultOptions, options);
 
 		// Validate position class
@@ -52,16 +53,16 @@ import {
 		// Validate options and set defaults
 		options = configureOptions(options);
 
-		const container = createNotificationContainer(options.positionClass);
-
 		// Return a notification function
 		return function notification({ title, message } = {}) {
+			const container = createNotificationContainer(options.positionClass);
+
 			if(!title && !message) {
 				return console.warn('Notification must contain a title or a message!');
 			}
 
 			// Create the notification wrapper
-			const notificationEl = createElement('div', 'ncf');
+			const notificationEl = createElement('div', 'ncf', options.theme);
 
 			// Close on click
 			if(options.closeOnClick === true) {
@@ -97,6 +98,11 @@ import {
 			if(options.showDuration) {
 				const timeout = setTimeout(() => {
 					container.removeChild(notificationEl);
+
+					// Remove container if empty
+					if(container.querySelectorAll('.ncf').length === 0) {
+						document.body.removeChild(container);
+					}
 				}, options.showDuration);
 
 				// If close on click is enabled and the user clicks, cancel timeout
@@ -111,7 +117,7 @@ import {
 		let container = document.querySelector(`.${position}`);
 
 		if(!container) {
-			container = createElement('div', position);
+			container = createElement('div', position, 'ncf-container');
 			append(document.body, container);
 		}
 

@@ -87,11 +87,12 @@ var _helpers = __webpack_require__(2);
 		displayCloseButton: false,
 		positionClass: 'nfc-top-right',
 		onclick: false,
-		showDuration: 300
+		showDuration: 3000,
+		theme: 'success'
 	};
 
 	function configureOptions(options) {
-		// Create a copy of options
+		// Create a copy of options and merge with defaults
 		options = Object.assign({}, defaultOptions, options);
 
 		// Validate position class
@@ -121,20 +122,20 @@ var _helpers = __webpack_require__(2);
 		// Validate options and set defaults
 		options = configureOptions(options);
 
-		var container = createNotificationContainer(options.positionClass);
-
 		// Return a notification function
 		return function notification() {
 			var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
 			    title = _ref.title,
 			    message = _ref.message;
 
+			var container = createNotificationContainer(options.positionClass);
+
 			if (!title && !message) {
 				return console.warn('Notification must contain a title or a message!');
 			}
 
 			// Create the notification wrapper
-			var notificationEl = (0, _helpers.createElement)('div', 'ncf');
+			var notificationEl = (0, _helpers.createElement)('div', 'ncf', options.theme);
 
 			// Close on click
 			if (options.closeOnClick === true) {
@@ -176,6 +177,11 @@ var _helpers = __webpack_require__(2);
 			if (options.showDuration) {
 				var timeout = setTimeout(function () {
 					container.removeChild(notificationEl);
+
+					// Remove container if empty
+					if (container.querySelectorAll('.ncf').length === 0) {
+						document.body.removeChild(container);
+					}
 				}, options.showDuration);
 
 				// If close on click is enabled and the user clicks, cancel timeout
@@ -192,7 +198,7 @@ var _helpers = __webpack_require__(2);
 		var container = document.querySelector('.' + position);
 
 		if (!container) {
-			container = (0, _helpers.createElement)('div', position);
+			container = (0, _helpers.createElement)('div', position, 'ncf-container');
 			(0, _helpers.append)(document.body, container);
 		}
 
