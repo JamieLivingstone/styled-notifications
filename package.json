@@ -4,7 +4,7 @@
   "description": "A simple JavaScript notifications library",
   "main": "",
   "scripts": {
-    "watch": "webpack --watch",
+    "start": "webpack --watch",
     "build": "webpack -p",
     "test": "jest"
   },
