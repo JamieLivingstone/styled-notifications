@@ -1,4 +1,8 @@
 'use strict';
+
+// Polyfills
+import './polyfills/classList';
+
 import {
 	append,
 	createElement,
@@ -123,7 +127,7 @@ import {
 		let container = document.querySelector(`.${position}`);
 
 		if(!container) {
-			container = createElement('div', position, 'ncf-container');
+			container = createElement('div', 'ncf-container', position);
 			append(document.body, container);
 		}
 

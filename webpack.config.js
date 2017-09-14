@@ -18,7 +18,7 @@ module.exports = {
 				test: /\.js$/,
 				loader: 'babel-loader',
 				query: {
-					presets: [ 'babel-preset-es2015' ].map(require.resolve)
+					presets: ['babel-preset-es2015', 'es2015-ie']
 				}
 			},
 			{
