@@ -49,6 +49,11 @@ import {
 			options.onclick = defaultOptions.onclick;
 		}
 
+		// Verify show duration
+		if(!typeof options.showDuration === 'number') {
+			options.showDuration = defaultOptions.showDuration;
+		}
+
 		// Verify theme
 		if(!isString(options.theme) || options.theme.length === 0) {
 			console.warn('Notification theme must be a string with length');
@@ -105,7 +110,7 @@ import {
 			append(container, notificationEl);
 
 			// Remove element after duration
-			if(options.showDuration) {
+			if(options.showDuration && options.showDuration > 0) {
 				const timeout = setTimeout(() => {
 					container.removeChild(notificationEl);
 

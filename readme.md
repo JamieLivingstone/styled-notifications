@@ -18,7 +18,7 @@ Download files from the dist folder and then:
 - displayCloseButton <bool> - Display a close button in the top right hand corner of the notification.
 - positionClass <string> - Set the position of the notification dialog. Accepted positions: ('nfc-top-right', 'nfc-bottom-right', 'nfc-bottom-left', 'nfc-top-left').
 - onClick <function(event)> - Call a callback function when a click is invoked on a notification.
-- showDuration <integer> - Milliseconds the notification should be visible
+- showDuration <integer> - Milliseconds the notification should be visible (0 for a notification that will remain open until clicked)
 - theme <string> - Set the position of the notification dialog. Accepted positions: ('success', 'info', 'warning', 'error', 'A custom clasName').
 ```
 const defaultOptions = {
