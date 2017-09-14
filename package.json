@@ -2,12 +2,14 @@
   "name": "notifications",
   "version": "1.0.0",
   "description": "A simple JavaScript notifications library",
-  "main": "",
+  "main": "dist/notifications.js",
   "scripts": {
     "start": "webpack --watch",
     "build": "webpack -p",
-    "test": "jest"
+    "test": "jest",
+    "prepare": "yarn run test && yarn run build"
   },
+  "files": ["dist"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JamieLivingstone/Notifications.git"
