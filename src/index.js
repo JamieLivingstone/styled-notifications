@@ -50,7 +50,7 @@ import {
 		}
 
 		// Verify show duration
-		if(!typeof options.showDuration === 'number') {
+		if(typeof options.showDuration !== 'number') {
 			options.showDuration = defaultOptions.showDuration;
 		}
 
