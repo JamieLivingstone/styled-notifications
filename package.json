@@ -1,6 +1,6 @@
 {
   "name": "styled-notifications",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple JavaScript notifications library",
   "main": "dist/notifications.js",
   "scripts": {
@@ -11,9 +11,6 @@
   },
   "pre-commit": [
     "prepare"
-  ],
-  "files": [
-    "dist"
   ],
   "repository": {
     "type": "git",
@@ -26,6 +23,14 @@
     "toast"
   ],
   "author": "Jamie Livingstone",
+  "contributors": [
+    {
+      "name": "Jamie Livingstone (https://github.com/JamieLivingstone)"
+    },
+    {
+      "name": "cavebeavis (https://github.com/cavebeavis)"
+    }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/JamieLivingstone/Notifications/issues"

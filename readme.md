@@ -5,7 +5,7 @@
 
 Works on browsers: IE9+, Safari, Chrome, FireFox, opera, edge
 
-## npm installation
+## npm Installation
 Do either
 ```
 npm i styled-notifications
@@ -51,16 +51,16 @@ const successNotification = window.createNotification({
 	theme: 'success',
 	showDuration: 5000
 });
-  
+
 // Invoke success notification
-successNotification({ 
-    message: 'Simple success notification' 
+successNotification({
+    message: 'Simple success notification'
 });
 
 // Use the same instance but pass a title
-successNotification({ 
+successNotification({
     title: 'Working',
-    message: 'Simple success notification' 
+    message: 'Simple success notification'
 });
 ```
 

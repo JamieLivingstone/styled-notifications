@@ -16,6 +16,13 @@ $grey: #999999;
     left: 12px;
   }
 
+  &.nfc-top-middle {
+    top: 12px;
+    padding-left: 2%;
+    padding-right: 2%;
+    horiz-align: center;
+  }
+
   &.nfc-top-right {
     top: 12px;
     right: 12px;
@@ -24,6 +31,13 @@ $grey: #999999;
   &.nfc-bottom-right {
     bottom: 12px;
     right: 12px;
+  }
+
+  &.nfc-bottom-middle {
+    bottom: 12px;
+    padding-left: 2%;
+    padding-right: 2%;
+    horiz-align: center;
   }
 
   &.nfc-bottom-left {
