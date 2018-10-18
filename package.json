@@ -1,6 +1,6 @@
 {
   "name": "styled-notifications",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple JavaScript notifications library",
   "main": "dist/notifications.js",
   "scripts": {
@@ -11,9 +11,6 @@
   },
   "pre-commit": [
     "prepare"
-  ],
-  "files": [
-    "dist"
   ],
   "repository": {
     "type": "git",
