@@ -1,6 +1,6 @@
 {
-  "name": "notifications",
-  "version": "1.0.0",
+  "name": "styled-notifications",
+  "version": "1.0.1",
   "description": "A simple JavaScript notifications library",
   "main": "dist/notifications.js",
   "scripts": {

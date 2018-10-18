@@ -5,8 +5,17 @@
 
 Works on browsers: IE9+, Safari, Chrome, FireFox, opera, edge
 
-## Demo
-- Demo can be found at https://jamielivingstone.me/demos/notifications
+## npm installation
+Do either
+```
+npm i styled-notifications
+```
+or add the following to your `package.json`:
+```
+"dependencies": {
+  "styled-notifications": "^1.0.1"
+},
+```
 
 ## Installation
 Download files from the dist folder and then:
@@ -67,7 +76,7 @@ window.createNotification({
 ```
 
 ### Todo
-1. Add to NPM
+1. ~~Add to NPM~~
 2. Improve documentation
 3. Further device testing
 4. Add contributor instructions
