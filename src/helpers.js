@@ -8,9 +8,10 @@ export const createElement = (elementType, ...classNames) => {
 	const element = document.createElement(elementType);
 
 	if(classNames.length) {
-		classNames.forEach(currentClass => element.classList.add(currentClass));
+		classNames.forEach(currentClass => {
+			element.classList.add(currentClass);
+		});
 	}
-
 	return element;
 };
 

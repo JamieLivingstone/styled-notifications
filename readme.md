@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/JamieLivingstone/Notifications.svg?branch=master)](https://travis-ci.org/JamieLivingstone/Notifications)
 
-# Notifications
-**Notifications** is a Javascript library for notifications heavily inspired by toastr but does not require any dependencies such as jQuery.
+# Styled-Notifications
+**Styled-Notifications** is a Javascript library for notifications heavily inspired by toastr but does not require any dependencies such as jQuery.
 
 Works on browsers: IE9+, Safari, Chrome, FireFox, opera, edge
 
@@ -13,7 +13,7 @@ npm i styled-notifications
 or add the following to your `package.json`:
 ```
 "dependencies": {
-  "styled-notifications": "^1.0.1"
+  "styled-notifications": "^1.0.4"
 },
 ```
 
@@ -27,10 +27,10 @@ Download files from the dist folder and then:
 ### Custom options
 - closeOnClick <bool> - Close the notification dialog when a click is invoked.
 - displayCloseButton <bool> - Display a close button in the top right hand corner of the notification.
-- positionClass <string> - Set the position of the notification dialog. Accepted positions: ('nfc-top-right', 'nfc-bottom-right', 'nfc-bottom-left', 'nfc-top-left').
+- positionClass <string> - Set the position of the notification dialog. Accepted positions: ('nfc-top-right', 'nfc-bottom-right', 'nfc-bottom-left', 'nfc-top-left', 'nfc-top-middle', 'nfc-bottom-middle').
 - onClick <function(event)> - Call a callback function when a click is invoked on a notification.
 - showDuration <integer> - Milliseconds the notification should be visible (0 for a notification that will remain open until clicked)
-- theme <string> - Set the position of the notification dialog. Accepted positions: ('success', 'info', 'warning', 'error', 'A custom clasName').
+- theme <string> - Set the position of the notification dialog. Accepted positions: ('success', 'info', 'warning', 'error', 'A custom className').
 ```
 const defaultOptions = {
 		closeOnClick: true,
@@ -74,6 +74,11 @@ window.createNotification({
     message: 'I have some information for you...'
 });
 ```
+const positionOptions
+## Additional
+
+### Polymer Lit-Element Implementation
+See [styled-notifications-element](https://www.npmjs.com/package/styled-notifications-element)
 
 ### Todo
 1. ~~Add to NPM~~
