@@ -1,5 +1,4 @@
-# IDE files
-.idea/
+# Apple file system folders
 .DS_Store
 
 # Build directories
@@ -10,8 +9,11 @@ node_modules/
 jspm_packages/
 
 # Lock files
-yarn.lock
 package-lock.json
+yarn.lock
+
+# IDE files
+.idea/
 
 # Logs
 logs

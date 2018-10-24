@@ -29,8 +29,10 @@ import {
 		function validatePositionClass(className) {
 			const validPositions = [
 				'nfc-top-left',
+				'nfc-top-middle',
 				'nfc-top-right',
 				'nfc-bottom-left',
+				'nfc-bottom-middle',
 				'nfc-bottom-right'
 			];
 

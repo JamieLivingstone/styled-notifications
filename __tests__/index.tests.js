@@ -70,7 +70,9 @@ describe('Notifications', () => {
 			'nfc-top-left',
 			'nfc-top-right',
 			'nfc-bottom-left',
-			'nfc-bottom-right'
+			'nfc-bottom-right',
+			'nfc-bottom-middle',
+			'nfc-top-middle'
 		];
 
 		validPositions.forEach(position => {
