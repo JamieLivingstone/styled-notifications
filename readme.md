@@ -27,7 +27,16 @@ Download files from the dist folder and then:
 ### Custom options
 - closeOnClick <bool> - Close the notification dialog when a click is invoked.
 - displayCloseButton <bool> - Display a close button in the top right hand corner of the notification.
-- positionClass <string> - Set the position of the notification dialog. Accepted positions: ('nfc-top-right', 'nfc-bottom-right', 'nfc-bottom-left', 'nfc-top-left').
+- positionClass <string> - Set the position of the notification dialog. Accepted positions: 
+    - `nfc-top-right`
+    - `nfc-middle-right`
+    - `nfc-middle-right`
+    - `nfc-top-center`
+    - `nfc-middle-center`
+    - `nfc-bottom-center`
+    - `nfc-top-left`
+    - `nfc-middle-left`
+    - `nfc-bottom-left`
 - onClick <function(event)> - Call a callback function when a click is invoked on a notification.
 - showDuration <integer> - Milliseconds the notification should be visible (0 for a notification that will remain open until clicked)
 - theme <string> - Set the position of the notification dialog. Accepted positions: ('success', 'info', 'warning', 'error', 'A custom clasName').
