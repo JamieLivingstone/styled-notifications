@@ -29,7 +29,7 @@ window.createNotification({
 	closeOnClick: ${closeOnClick},
 	displayCloseButton: ${displayClose},
 	positionClass: ${position},
-	showDuration: ${duration},
+	showDuration: Number(${duration}),
 	theme: ${theme}
 })({
 	title: ${title},
@@ -45,7 +45,7 @@ window.createNotification({
 			closeOnClick: closeOnClick,
 			displayCloseButton: displayClose,
 			positionClass: position,
-			showDuration: duration,
+			showDuration: Number(duration),
 			theme: theme
 		})({
 			title: title,
