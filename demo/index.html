@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-</hea>
+<head>
 <meta charset="UTF-8">
 <title>Notifications</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,11 +45,33 @@
         margin-bottom: 0;
         padding: 10px 5px;
     }
+    #cmdoutput {
+		padding: 5px;
+		text-align:left;
+		border: 2px solid grey;
+		margin: 5px;
+		display:inline-block;
+	}
+
+	/* Attempt to colour <option> in dropdown selection.
+	colors copied from SCSS (not sure how to access them here)
+	Only one of the following two blocks is needed. 
+	Works with Chrome, but not Firefox; */
+	.c_success{background-color: #51A351 !important;}
+	.c_info{background-color: #2F96B4 !important;}
+	.c_warning{background-color: #f87400 !important;}
+	.c_error{background-color: #BD362F !important;}
+
+	select option[value="success"]  { background: #51A351; }
+	select option[value="info"] 	{ background: #2F96B4; }
+	select option[value="warning"]  { background: #F87400; }
+	select option[value="error"] 	{ background: #BD362F; }
+
 </style>
 
 <!-- Notifications styling -->
 <link rel="stylesheet" href="../dist/notifications.css" type="text/css">
-<head>
+</head>
 <body>
 <h1>Notifications</h1>
 <form>
@@ -82,10 +104,10 @@
     <label for="theme">Theme</label>
     <br/>
     <select id="theme">
-        <option value="success">Success</option>
-        <option value="info">Information</option>
-        <option value="warning">Warning</option>
-        <option value="error">Error</option>
+        <option value="success" class="c_success">Success</option>
+        <option value="info" class="c_info">Information</option>
+        <option value="warning" class="c_warning">Warning</option>
+        <option value="error" class="c_error">Error</option>
         <option value="none">None</option>
     </select>
 
@@ -99,6 +121,9 @@
 
     <input type="submit" value="Display notification">
 </form>
+
+<br/><br/>
+<div id="cmdoutput"></div>
 
 <script src="../dist/notifications.js" type="text/javascript"></script>
 <script src="./demo.js" type="text/javascript"></script>
