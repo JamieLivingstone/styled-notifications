@@ -38,7 +38,8 @@ window.createNotification({
 </pre>
 		`;
 
-		document.getElementById("cmdoutput").innerHTML =text;
+		document.getElementById('cmdoutput').innerHTML = text;
+
 		
 		//create the notification
 		window.createNotification({
