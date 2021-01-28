@@ -85,8 +85,3 @@ window.createNotification({
 });
 ```
 
-### Todo
-~~1. Add to NPM~~
-2. Improve documentation
-3. Further device testing
-4. Add contributor instructions
