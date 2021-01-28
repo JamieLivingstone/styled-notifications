@@ -1,9 +1,10 @@
 [![Build Status](https://travis-ci.org/JamieLivingstone/Notifications.svg?branch=master)](https://travis-ci.org/JamieLivingstone/Notifications)
 
 # Notifications
-**Notifications** is a Javascript library for notifications heavily inspired by toastr but does not require any dependencies such as jQuery.
+**Notifications** is a lightweight Javascript library for notifications inspired by Toastr, but without requiring any dependencies such as jQuery.
 
 Works on browsers: IE9+, Safari, Chrome, FireFox, opera, edge
+![example](https://github.com/salamander2/styled-notifications/blob/master/demo/examples.png?raw=true "Examples of Notifications")
 
 ## npm Installation
 Do either
@@ -84,8 +85,3 @@ window.createNotification({
 });
 ```
 
-### Todo
-~~1. Add to NPM~~
-2. Improve documentation
-3. Further device testing
-4. Add contributor instructions
