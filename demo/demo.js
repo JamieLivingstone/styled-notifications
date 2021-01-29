@@ -1,27 +1,27 @@
 'use strict';
 
 // Written using ES5 JS for browser support
-window.addEventListener('DOMContentLoaded', function () {
-	var form = document.querySelector('form');
+window.addEventListener('DOMContentLoaded', () => {
+	const form = document.querySelector('form');
 
-	form.addEventListener('submit', function (e) {
+	form.addEventListener('submit', e => {
 		e.preventDefault();
 
 		// Form elements
-		var title = form.querySelector('#title').value;
-		var message = form.querySelector('#message').value;
-		var position = form.querySelector('#position').value;
-		var duration = form.querySelector('#duration').value;
-		var theme = form.querySelector('#theme').value;
-		var closeOnClick = form.querySelector('#close').checked;
-		var displayClose = form.querySelector('#closeButton').checked;
+		const title = form.querySelector('#title').value;
+		let message = form.querySelector('#message').value;
+		const position = form.querySelector('#position').value;
+		const duration = form.querySelector('#duration').value;
+		const theme = form.querySelector('#theme').value;
+		const closeOnClick = form.querySelector('#close').checked;
+		const displayClose = form.querySelector('#closeButton').checked;
 
-		if(!message) {
+		if (!message) {
 			message = 'You did not enter a message...';
 		}
 
 		//create the text version of the command for displaying
-		let text = `
+		document.getElementById('cmdoutput').innerHTML = `
 		<label> JS Command used to create this notification:</label>
 		<hr>
 <pre>
@@ -38,9 +38,6 @@ window.createNotification({
 </pre>
 		`;
 
-		document.getElementById('cmdoutput').innerHTML = text;
-
-		
 		//create the notification
 		window.createNotification({
 			closeOnClick: closeOnClick,
