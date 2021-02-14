@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/JamieLivingstone/Notifications.svg?branch=master)](https://travis-ci.org/JamieLivingstone/Notifications)
+[![Build Status](https://travis-ci.com/bastiengrignon/styled-notifications.svg?branch=master)](https://travis-ci.com/bastiengrignon/styled-notifications)
 
 # Notifications
 **Notifications** is a lightweight Javascript library for notifications inspired by Toastr, but without requiring any dependencies such as jQuery.
