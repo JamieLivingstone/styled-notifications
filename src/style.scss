@@ -16,9 +16,26 @@ $grey: #999999;
     left: 12px;
   }
 
+  &.nfc-top-center {
+    top: 12px;
+    left: calc(50% - 150px);
+    right: 50%
+  }
+
   &.nfc-top-right {
     top: 12px;
     right: 12px;
+  }
+
+  &.nfc-bottom-left {
+    bottom: 12px;
+    left: 12px;
+  }
+
+  &.nfc-bottom-center {
+    bottom: 12px;
+    left: calc(50% - 150px);
+    right: 50%;
   }
 
   &.nfc-bottom-right {
@@ -26,9 +43,23 @@ $grey: #999999;
     right: 12px;
   }
 
-  &.nfc-bottom-left {
-    bottom: 12px;
+  &.nfc-middle-left {
+    top: 50%;
     left: 12px;
+    transform: translateY(-50%)
+  }
+
+  &.nfc-middle-center {
+    top: 50%;
+    left: calc(50% - 150px);
+    right: 50%;
+    transform: translateY(-50%)
+  }
+
+  &.nfc-middle-right {
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%)
   }
 
   @media (max-width: 767px) {
